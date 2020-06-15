@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mb-1">
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">{{ post.title }}</strong>
+                    <h3 class="mb-0"></h3>
+                    <div class="mb-1 text-muted">{{ post.date|date:"j E Y" }}</div>
+                    <p class="card-text mb-auto">{% autoescape off %}{{ post.text }}{% endautoescape %}</p>
+                </div>
+            </div>
+            <h1>Комментарии:</h1>
+            <div class="row mb-1">
+                <div class="col-md-12">
+                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        {% for comment in comments %}
+                        {{comment.author}}: {{comment.created}}<br><br>
+                        {{comment.text}}<br><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <form class="form-signin col-md-6 mb-3" method="post" action="">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Отправить</button>
+            </form>
+            {% endif %}
+        </div>
+
+        {% endblock %}

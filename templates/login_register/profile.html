@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <div class="container">
+        <form class="form-sign_up" id="ajax-form" style="margin-left: 30%; margin-right: 30%" method="post" action="">
+            {% csrf_token %}
+            {{ forms.as_p }}
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Сохранить</button>
+
+        </form>
+    </div>
+</div>
+<!--<script type="text/javascript">-->
+<!--    $('#ajax-form').submit(function (e) {-->
+<!--        $.ajax({-->
+<!--            url: $('#ajax-form').attr("action"),-->
+<!--            type: 'POST',-->
+<!--            data: $('#ajax-form').serialize(),-->
+<!--            cache: true,-->
+<!--            success: function (data) {-->
+<!--                if (data['key'] == 'yes') {-->
+<!--                    var url = "{% url 'blog:news' %}";-->
+<!--                    $(location).attr('href', url);-->
+<!--                } else {-->
+<!--                    $('.pass_err').text(data['data']['password2']);-->
+<!--                    $('.user_err').text(data['data']['username']);-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--        e.preventDefault();-->
+<!--    });-->
+
+<!--</script>-->
+{% endblock %}

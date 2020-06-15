@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <div class="container">
+        {% if user.is_authenticated %}
+        <h1 class="h3 mb-3 font-weight-normal">Вы авторизованны</h1>
+        <a class="btn btn-outline-primary mr-3" href="{% url 'login_register:logout' %}">Выход</a>
+        {% else %}
+        <form class="form-signin" id="my-ajax-form" style="margin-left: 30%; margin-right: 30%" method="post" action="">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal">Пожалуйста, введите данные</h1>
+            <input type="text" class="form-control mb-3" placeholder="Login" name="username">
+            <input type="password" class="form-control mb-3" placeholder="Password" name="password">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+            <div class="form_err"></div>
+            <p class="mt-5 mb-3 text-muted">© 2020</p>
+        </form>
+        {% endif %}
+    </div>
+</div>
+<script type="text/javascript">
+    $('#my-ajax-form').submit(function (e) {
+        $.ajax({
+            url: $('#my-ajax-form').attr("action"),
+            type: 'POST',
+            data: $('#my-ajax-form').serialize(),
+            cache: true,
+            success: function (data) {
+                if (data['key'] == 'yes') {
+                    var url = "{% url 'blog:news' %}";
+                    $(location).attr('href', url);
+                } else {
+                    $('.form_err').text(data['data']['__all__']);
+                }
+            }
+        });
+        e.preventDefault();
+    });
+
+
+
+</script>
+{% endblock %}
