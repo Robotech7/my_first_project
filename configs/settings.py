@@ -2,11 +2,11 @@ import os
 
 import environ
 
-env = environ.Env(
-    DEBUG=(bool, True)
-)
-
-environ.Env.read_env()
+# env = environ.Env(
+#     DEBUG=(bool, True)
+# )
+#
+# environ.Env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -15,10 +15,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "l1tp69stis5^d*s9$32r)j%u(5i2ha(t@len5ub9qy(vu7op!l"
+    # env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
