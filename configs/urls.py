@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('authorization/', include('login_register.urls')),
     path('send_message/', include('send_message.urls')),
+    path('weather/', include('weather.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

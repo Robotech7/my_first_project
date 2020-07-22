@@ -1,5 +1,4 @@
 from django.urls import path
-
 from .views import PostView, PostDetail
 
 app_name = 'blog'

@@ -1,5 +1,4 @@
 import os
-
 import environ
 
 # env = environ.Env(
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'blog',
     'login_register',
     'send_message',
+    'weather'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +129,5 @@ CKEDITOR_CONFIGS = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+OPEN_WEATHER_MAP_API = '75fbcc23c05b77b47a13ac8b85825144'
